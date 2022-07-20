@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from crmapp.marketing.views import HomePage
 from crmapp.subscribers.views import subscriber_new
+
+admin.autodiscover()
+
 urlpatterns = [
-    url('admin/', admin.site.urls),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomePage.as_view(), name="home"),
     url(r'^signup/$', subscriber_new, name="signup")
 ]
