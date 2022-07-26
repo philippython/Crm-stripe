@@ -13,6 +13,7 @@ class Subscriber(models.Model):
     state = models.CharField(max_length=2)
     stripe_id = models.CharField(max_length=30, blank=True)
 
+    USERNAME_FIELD = 'stripe_id'
     class Meta:
         verbose_name_plural = 'subscribers'
 

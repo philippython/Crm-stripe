@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from crmapp.marketing.views import HomePage
 from crmapp.subscribers.views import subscriber_new
+from django.contrib.auth.views import LoginView, LogoutView
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomePage.as_view(), name="home"),
-    url(r'^signup/$', subscriber_new, name="signup")
+    url(r'^signup/$', subscriber_new, name="signup"),
+    url(r'^login/$', LoginView.as_view(template_name='login.html'), name='login'),
+    url(r'^logout/$', LogoutView.as_view(next_page='/login/'), name='logout')
 ]
