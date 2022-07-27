@@ -8,7 +8,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView
 class AccountList(ListView):
     template_name = 'account/account_list.html'
     model = Account
-    paginate_by = 2
+    paginate_by = 10
     context_object_name = 'accounts'
 
     def get_queryset(self):
@@ -34,7 +34,9 @@ class AccountDetail(DetailView):
 
 class AccountCreate(CreateView):
     model = Account
+    fields = '__all__'
+
 
 class AccountEdit(UpdateView):
     model = Account
-    fields = ('name', 'desc')
+    fields = ['name', 'desc', 'address_one', 'address_two', 'city', 'state', 'phone']

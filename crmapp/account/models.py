@@ -24,12 +24,12 @@ class Account(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return 'account_detail', [self.uuid]
+        return 'account_detail', [self.pk]
 
     @models.permalink
     def get_update_url(self):
-        return 'account_update', [self.uuid]
+        return 'account_update', [self.pk]
 
     @models.permalink
     def get_delete_url(self):
-        return 'account_delete', [self.uuid]
+        return 'account_delete', [self.pk]
